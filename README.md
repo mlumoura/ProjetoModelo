@@ -5,7 +5,7 @@
 <img src="https://img.shields.io/badge/Git-GitHub-black?style=for-the-badge" alt="GitHub">
 
 ## 📌 Sobre o Projeto
-O **ProjetoModelo** é uma aplicação voltada para [objetivo do projeto]. Ele utiliza **Java, Spring Boot e GitHub** para o desenvolvimento.  
+O **ProjetoModelo** é uma aplicação voltada para [aprendizado e desenvlvimento técnicas diversificadas, fazendo com que, a cada entidade, sejam utilizados métodos diferentes. Ele utiliza **Java, Spring Boot e GitHub** para o desenvolvimento. 
 
 ## 🔧 Tecnologias Utilizadas
 ✔ Java 21  
