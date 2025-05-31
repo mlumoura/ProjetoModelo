@@ -1,0 +1,153 @@
+/* 🔹 Estilo Global */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+/* 🔹 Modo escuro */
+.dark-mode {
+    background-color: #1a1a1a; /* 🔹 Ajustado para evitar sobreposição de temas */
+    color: white;
+}
+
+body.consulta {
+    background-color: #f8f8f8; /* 🔹 Isso pode estar forçando o tema claro */
+}
+
+body.relatorio {
+    background-color: #222; /* 🔹 Isso pode estar forçando o tema escuro */
+}
+
+
+/* 🔹 Containers centralizados */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* 🔹 Cards para apresentação de dados */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    width: 250px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* 🔹 Efeito ao passar o mouse */
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* 🔹 Modo escuro nos cards */
+.dark-mode .card {
+    background: #333;
+    color: white;
+}
+
+/* 🔹 Melhorando a tabela */
+table {
+    width: 80%; /* 🔹 Reduz um pouco a largura para melhor centralização */
+    max-width: 900px;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    margin: auto; /* 🔹 Garante que a tabela fique no centro */
+    overflow-x: auto; /* 🔹 Permite rolagem horizontal */
+}
+
+/* 🔹 Ajustando tabela no modo escuro */
+.dark-mode table {
+    background-color: #333;
+    color: white;
+}
+
+/.dark-mode th {
+    background-color: #444;
+    color: white;
+}
+
+/.dark-mode td {
+    color: white;
+}
+
+/* 🔹 Destacar linha ao passar o mouse */
+tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* 🔹 Cabeçalho da tabela */
+th {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+}
+
+/* 🔹 Botões */
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+/* 🔹 Efeito ao passar o mouse nos botões */
+button:hover {
+    background-color: #0056b3;
+}
+
+/* 🔹 Responsividade */
+@media screen and (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    .card {
+        width: 90%;
+    }
+}
+
+/* 🔹 Estilo específico para a tela de relatórios */
+.relatorio-container {
+    background-color: #f8f8f8; /* 🔹 Agora igual ao fundo da consulta */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* 🔹 Ajuste no modo escuro para relatórios */
+.dark-mode .relatorio-container {
+    background-color: #222;
+}
+
+/* 🔹 Adiciona rolagem vertical para listas grandes */
+.resultados-container {
+    max-height: 400px;
+    overflow-y: auto;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 🔹 Centraliza o conteúdo */
+}

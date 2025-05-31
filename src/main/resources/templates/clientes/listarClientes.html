@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<div class="container-clientes">
+    <h1>Lista de Clientes</h1>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Data de Criação</th>
+            <th>Última Atualização</th>
+        </tr>
+        <tr th:each="cliente : ${clientes}">
+            <td th:text="${cliente.id}"></td>
+            <td th:text="${cliente.nome}"></td>
+            <td th:text="${cliente.dataCriacao}"></td>
+            <td th:text="${cliente.dataAtualizacao}"></td>
+        </tr>
+    </table>
+
+    <br>
+    <button onclick="window.location.href='/menu'">Voltar ao Menu</button>
+</div>
+
+</body>
+</html>
+

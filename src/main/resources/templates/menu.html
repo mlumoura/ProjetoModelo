@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+    <title>Sistema de Clientes</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/script.js"></script>
+
+</head>
+<body>
+<h1>Bem-vindo ao Sistema de Clientes</h1>
+
+<div class="container">
+    <div class="card">
+        <h2>Lista de Clientes</h2>
+        <button onclick="window.location.href='http://localhost:8080/clientes-view/consulta'">Consultar Clientes</button>
+
+    </div>
+    <div class="card">
+        <h2>Relatórios</h2>
+        <button onclick="window.location.href='/clientes-view/relatorios-html'">Gerar Relatório por Datas</button>
+        <button onclick="window.location.href='/clientes-view/relatorios-atualizados'">Registros Atualizados</button>
+
+    </div>
+</div>
+
+<button onclick="toggleDarkMode()">Ativar/Desativar Tema Escuro</button>
+</body>
+</html>

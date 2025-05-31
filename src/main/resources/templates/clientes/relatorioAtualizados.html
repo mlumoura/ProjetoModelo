@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Clientes Atualizados</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<h1>📊 Relatório de Clientes Atualizados</h1>
+
+<div class="metricas">
+    <h2>📌 Visão Geral</h2>
+    <p><strong>Total de clientes:</strong> <span th:text="${totalClientes}"></span></p>
+    <p><strong>Clientes criados hoje:</strong> <span th:text="${clientesCriadosHoje}"></span></p>
+    <p><strong>Clientes atualizados hoje:</strong> <span th:text="${clientesAtualizadosHoje}"></span></p>
+</div>
+
+<hr>
+
+<h2>📌 Filtro de Atualizações</h2>
+<form id="formRelatorio" action="/clientes-view/relatorios-atualizados" method="get">
+    <label for="dataInicio"><strong>Atualizados a partir de:</strong></label>
+    <input type="date" id="dataInicio" name="inicio" th:value="${param.inicio}">
+
+    <label for="dataFim"><strong>Atualizados até:</strong></label>
+    <input type="date" id="dataFim" name="fim" th:value="${param.fim}">
+
+    <button type="submit">Buscar Relatório</button>
+</form>
+
+<hr>
+
+<h2>📃 Resultados</h2>
+<div class="relatorio-container">
+    <div class="resultados-container"> <!-- 🔹 Adiciona rolagem -->
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Data de Criação</th>
+                <th>Última Atualização</th>
+            </tr>
+            <tr th:each="cliente : ${clientes}">
+                <td th:text="${cliente.id}"></td>
+                <td th:text="${cliente.nome}"></td>
+                <td th:text="${cliente.dataCriacao}"></td>
+                <td th:text="${cliente.dataAtualizacao}"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script src="/js/script.js"></script>
+
+<button onclick="window.location.href='/menu'">Voltar ao Menu Principal</button>
+
+</body>
+</html>
+
+

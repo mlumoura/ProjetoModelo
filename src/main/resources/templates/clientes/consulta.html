@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+    <title>Consultas de Clientes</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<div class="container-consulta">
+    <h1>Consultar Clientes</h1>
+
+    <!-- 🔹 Consulta por ID -->
+    <form action="/clientes-view/buscar-id" method="get">
+    <label>ID do Cliente:</label>
+        <input type="number" name="id" required>
+        <button type="submit">Buscar</button>
+    </form>
+
+    <!-- 🔹 Consulta por Nome -->
+    <form action="/clientes-view/buscar-nome" method="get">
+        <label>Nome do Cliente:</label>
+        <input type="text" name="nome" required>
+        <button type="submit">Buscar</button>
+    </form>
+
+    <!-- 🔹 Consulta por Intervalo de Datas -->
+    <form action="/clientes-view/buscar-data-html" method="get">
+        <label>Data de Início:</label>
+        <input type="date" name="inicio">
+        <label>Data de Fim:</label>
+        <input type="date" name="fim">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <!-- Consulta por nome e data -->
+    <form action="/clientes-view/buscar-nome-data" method="get">
+    <label>Nome do Cliente:</label>
+    <input type="text" name="nome" required>
+
+    <label>Data de Início:</label>
+    <input type="date" name="inicio">
+
+    <label>Data de Fim:</label>
+    <input type="date" name="fim">
+
+    <button type="submit">Buscar</button>
+</form>
+
+    <div class="resultados-container">
+        <h2>Resultados da Consulta</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Data de Criação</th>
+                <th>Última Atualização</th>
+            </tr>
+            <tr th:each="cliente : ${clientes}">
+                <td th:text="${cliente.id}"></td>
+                <td th:text="${cliente.nome}"></td>
+                <td th:text="${cliente.dataCriacao}"></td>
+                <td th:text="${cliente.dataAtualizacao}"></td>
+            </tr>
+        </table>
+    </div>
+
+
+
+    <br>
+    <div id="erro-message" th:if="${erro}" style="color: red;">
+        <p>Erro: <span th:text="${erro}"></span></p>
+    </div>
+
+
+    <br>
+    <button onclick="window.location.href='/menu'">Voltar ao Menu</button>
+</div>
+
+<script>
+    window.onload = function () {
+        // 🔹 Reseta os campos dos formulários
+        document.querySelectorAll("input").forEach(input => input.value = "");
+
+        // 🔹 Esconde a mensagem de erro após 4 segundos
+        setTimeout(function () {
+            let erroDiv = document.getElementById("erro-message");
+            if (erroDiv) {
+                erroDiv.style.display = "none";
+            }
+        }, 4000);
+    };
+</script>
+
+</body>
+</html>
