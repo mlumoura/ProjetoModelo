@@ -1,0 +1,1 @@
+Projeto sendo desenvolvido com o propósito de servir de base para futuros trabalhos. Aqui, além do uso de POO, vamos ter o uso de Thymelea, JSP, Cryptografia, Técnicas de Segyurança, exemplo de microserviços dentre outras técnicas.
