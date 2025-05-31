@@ -1,6 +1,6 @@
 # 🚀 ProjetoModelo
 
-<img src="https://img.shields.io/badge/Java-17-blue?style=for-the-badge" alt="Java">
+<img src="https://img.shields.io/badge/Java-21-blue?style=for-the-badge" alt="Java">
 <img src="https://img.shields.io/badge/SpringBoot-3.0-green?style=for-the-badge" alt="Spring Boot">
 <img src="https://img.shields.io/badge/Git-GitHub-black?style=for-the-badge" alt="GitHub">
 
