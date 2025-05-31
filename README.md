@@ -14,7 +14,7 @@
 
 
 ## 📌 Sobre o Projeto
-O **ProjetoModelo** é uma aplicação voltada para [aprendizado e desenvlvimento técnicas diversificadas, fazendo com que, a cada entidade, sejam utilizados métodos diferentes. Ele utiliza **Java, Spring Boot e GitHub** para o desenvolvimento. 
+O **ProjetoModelo** é uma aplicação voltada para aprendizado e desenvlvimento técnicas diversificadas. A idéia é de que, a cada entidade, BD, métodos, frameworks e bibliotecas diferentes sejam utilizados.
 
 ## 🔧 Tecnologias Utilizadas
 ✔ Java 21  
