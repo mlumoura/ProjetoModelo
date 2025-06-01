@@ -15,6 +15,7 @@ java {
 
 repositories {
 	mavenCentral()
+	jcenter()
 }
 
 dependencies {
@@ -27,6 +28,13 @@ dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	implementation 'io.jsonwebtoken:jjwt-impl:0.11.5'
+	implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5' // Para suporte ao JSON
+
+	// Correção: Adicionando a dependência para corrigir erros de HttpServletRequest e FilterChain
+	implementation 'javax.servlet:javax.servlet-api:4.0.1'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
@@ -34,3 +42,4 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
