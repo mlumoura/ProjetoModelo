@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios de Clientes</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<h1>📊 Relatórios de Clientes</h1>
+
+<!-- 🔹 Exibe o status do modo escuro -->
+<div id="statusModo" style="font-size: 24px; font-weight: bold; margin: 20px; padding: 10px; background-color: #f0f0f0; border: 2px solid #DCDCDC;">
+    Carregando status do tema...
+</div>
+
+<div class="metricas">
+    <h2>📌 Visão Geral</h2>
+    <p><strong>Total de clientes na base:</strong> <span th:text="${totalClientes}"></span></p>
+    <p><strong>Clientes incluídos hoje:</strong> <span th:text="${clientesCriadosHoje}"></span></p>
+</div>
+
+<hr>
+
+<h2>📌 Filtro de Cadastros</h2>
+<form id="formRelatorio" action="/clientes-view/relatorios-html" method="get">
+    <label for="dataInicio"><strong>Clientes cadastrados a partir de:</strong></label>
+    <input type="date" id="dataInicio" name="inicio" th:value="${param.inicio}">
+
+    <label for="dataFim"><strong>Clientes cadastrados até:</strong></label>
+    <input type="date" id="dataFim" name="fim" th:value="${param.fim}">
+
+    <button type="submit">Buscar Relatório</button>
+</form>
+<hr>
+
+<h2>📃 Resultados</h2>
+<div class="relatorio-container">
+    <div class="resultados-container">
+        <table class="table-with-fixed-header">
+            <colgroup>
+                <col style="width: 10%">
+                <col style="width: 30%">
+                <col style="width: 30%">
+                <col style="width: 30%">
+            </colgroup>
+
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Data de Criação</th>
+                <th>Última Atualização</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="cliente : ${clientes}">
+                <td th:text="${cliente.id}"></td>
+                <td th:text="${cliente.nome}"></td>
+                <td th:text="${cliente.dataCriacao}"></td>
+                <td th:text="${cliente.dataAtualizacao}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="/js/script.js"></script>
+
+<button onclick="window.location.href='/menu'">Voltar ao Menu Principal</button>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        let darkModeAtivado = localStorage.getItem("darkMode") === "true";
+        let statusModo = document.getElementById("statusModo");
+
+        if (darkModeAtivado) {
+            document.body.classList.add("dark-mode");
+        }
+
+        if (statusModo) {
+            statusModo.innerText = darkModeAtivado ? "🌙 Modo Escuro ATIVADO! 🌙" : "☀️ Modo Claro ATIVADO! ☀️";
+            statusModo.style.backgroundColor = darkModeAtivado ? "#333" : "#f0f0f0";
+            statusModo.style.color = darkModeAtivado ? "white" : "black";
+        }
+    });
+</script>
+
+</body>
+</html>
+

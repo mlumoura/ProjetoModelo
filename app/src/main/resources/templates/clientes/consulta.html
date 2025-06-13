@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+    <title>Consultas de Clientes</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- 🔹 Importa o CSS para estilização -->
+</head>
+<body>
+
+<div class="container-consulta">
+    <h1>Consultar Clientes</h1>
+
+    <!-- 🔹 Exibe o status do modo escuro -->
+    <div id="statusModo" style="font-size: 24px; font-weight: bold; margin: 20px; padding: 10px; background-color: #f0f0f0; border: 2px solid #DCDCDC;">
+        Carregando status do tema...
+    </div>
+
+    <!-- 🔹 Consulta por ID -->
+    <form action="/clientes-view/buscar-id" method="get">
+        <label>ID do Cliente:</label>
+        <input type="number" name="id" required>
+        <button type="submit">Buscar</button>
+    </form>
+
+    <!-- 🔹 Consulta por Nome -->
+    <form action="/clientes-view/buscar-nome" method="get">
+        <label>Nome do Cliente:</label>
+        <input type="text" name="nome" required>
+        <button type="submit">Buscar</button>
+    </form>
+
+    <!-- 🔹 Consulta por Intervalo de Datas -->
+    <form action="/clientes-view/buscar-data-html" method="get">
+        <label>Data de Início:</label>
+        <input type="date" name="inicio">
+        <label>Data de Fim:</label>
+        <input type="date" name="fim">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <!-- 🔹 Consulta por Nome e Data -->
+    <form action="/clientes-view/buscar-nome-data" method="get">
+        <label>Nome do Cliente:</label>
+        <input type="text" name="nome" required>
+
+        <label>Data de Início:</label>
+        <input type="date" name="inicio">
+
+        <label>Data de Fim:</label>
+        <input type="date" name="fim">
+
+        <button type="submit">Buscar</button>
+    </form>
+
+    <div class="resultados-container">
+        <h2>Resultados da Consulta</h2>
+
+        <!-- 🔹 Tabela com cabeçalho fixo e rolagem nos registros -->
+        <table class="table-with-fixed-header">
+            <!-- 🔹 Define colunas da tabela -->
+            <colgroup>
+                <col style="width: 10%">
+                <col style="width: 30%">
+                <col style="width: 30%">
+                <col style="width: 30%">
+            </colgroup>
+
+            <!-- 🔹 Cabeçalho fixo da tabela -->
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Data de Criação</th>
+                <th>Última Atualização</th>
+            </tr>
+            </thead>
+
+            <!-- 🔹 Corpo rolável da tabela -->
+            <tbody>
+            <tr th:each="cliente : ${clientes}">
+                <td th:text="${cliente.id}"></td>
+                <td th:text="${cliente.nome}"></td>
+                <td th:text="${cliente.dataCriacao}"></td>
+                <td th:text="${cliente.dataAtualizacao}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br>
+
+    <!-- 🔹 Mensagem de erro exibida apenas se houver erro -->
+    <div id="erro-message" th:if="${erro}" style="color: red;">
+        <p>Erro: <span th:text="${erro}"></span></p>
+    </div>
+
+    <br>
+    <button onclick="window.location.href='/menu'">Voltar ao Menu</button> <!-- 🔹 Botão para voltar ao menu -->
+</div>
+
+<script>
+    window.onload = function () {
+        // 🔹 Reseta os campos dos formulários ao carregar a página
+        document.querySelectorAll("input").forEach(input => input.value = "");
+
+        // 🔹 Esconde a mensagem de erro após 4 segundos
+        setTimeout(function () {
+            let erroDiv = document.getElementById("erro-message");
+            if (erroDiv) {
+                erroDiv.style.display = "none";
+            }
+        }, 4000);
+    };
+</script>
+
+<script src="/static/js/tema.js"></script> <!-- 🔹 Importa o JavaScript para alternância de temas -->
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        let darkModeAtivado = localStorage.getItem("darkMode") === "true";
+        let statusModo = document.getElementById("statusModo");
+
+        if (darkModeAtivado) {
+            document.body.classList.add("dark-mode");
+        }
+
+        if (statusModo) {
+            statusModo.innerText = darkModeAtivado ? "🌙 Modo Escuro ATIVADO! 🌙" : "☀️ Modo Claro ATIVADO! ☀️";
+            statusModo.style.backgroundColor = darkModeAtivado ? "#333" : "#f0f0f0";
+            statusModo.style.color = darkModeAtivado ? "white" : "black";
+        }
+    });
+</script>
+
+</body>
+</html>
+

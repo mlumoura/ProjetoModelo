@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+    <title>Lista de Clientes</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- 🔹 Importa o CSS para estilização -->
+</head>
+
+<body th:class="${tema}"> <!-- 🔹 Aplica o tema (claro ou escuro) conforme a variável -->
+
+<div class="container-clientes">
+    <h1>Lista de Clientes</h1>
+
+    <!-- 🔹 Tabela com cabeçalho fixo e rolagem nos registros -->
+    <table class="table-with-fixed-header">
+        <!-- 🔹 Define colunas da tabela -->
+        <colgroup>
+            <col style="width: 10%">
+            <col style="width: 30%">
+            <col style="width: 30%">
+            <col style="width: 30%">
+        </colgroup>
+
+        <!-- 🔹 Cabeçalho fixo da tabela -->
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Data de Criação</th>
+            <th>Última Atualização</th>
+        </tr>
+        </thead>
+
+        <!-- 🔹 Corpo rolável da tabela -->
+        <tbody>
+        <tr th:each="cliente : ${clientes}">
+            <td th:text="${cliente.id}"></td>
+            <td>
+                <span class="tooltip-trigger" th:text="${cliente.nome}"></span>
+                <span class="tooltip" th:text="'CPF: ***.***.***-** | Endereço: ' + ${cliente.endereco}"></span>
+            </td>
+            <td th:text="${cliente.dataCriacao}"></td>
+            <td th:text="${cliente.dataAtualizacao}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- 🔹 Botão voltou para fora do card -->
+<br>
+<button onclick="window.location.href='/menu'">Voltar ao Menu</button> <!-- 🔹 Botão para voltar ao menu -->
+
+<script src="/static/js/tema.js"></script> <!-- 🔹 Importa o JavaScript para alternância de temas -->
+
+</body>
+</html>
+

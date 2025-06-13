@@ -1,0 +1,68 @@
+/*
+ * Arquivo `build.gradle` para um projeto Spring Boot com Gradle.
+ * Ele contém as configurações necessárias para compilar, rodar e gerenciar dependências do projeto.
+ */
+
+plugins {
+    // O plugin `application` adiciona suporte para criar um aplicativo Java executável.
+    id 'application'
+
+    // Plugins essenciais do Spring Boot para facilitar configuração e gerenciamento de dependências.
+    id 'org.springframework.boot' version '3.3.11'
+    id 'io.spring.dependency-management' version '1.1.7'
+
+    // Plugin `java` para permitir compilação de código Java no projeto.
+    id 'java'
+}
+
+repositories {
+    // Define o repositório de dependências como Maven Central, onde o Gradle buscará bibliotecas.
+    mavenCentral()
+}
+
+dependencies {
+    // Gerenciador de versão do Spring Boot para evitar conflitos entre dependências.
+    implementation platform('org.springframework.boot:spring-boot-dependencies:3.3.11')
+
+    // Dependência para desenvolvimento de aplicações web com Spring Boot.
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Dependência que facilita o desenvolvimento, habilitando hot reload.
+    implementation 'org.springframework.boot:spring-boot-devtools'
+
+    // Dependência para integração com banco de dados usando JPA (Hibernate).
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // Conector do MySQL para permitir interação entre o Spring Boot e um banco MySQL.
+    implementation 'mysql:mysql-connector-java:8.0.33'
+
+    // Dependência para usar o motor de templates Thymeleaf no frontend da aplicação.
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    // Dependência para adicionar autenticação e segurança à aplicação.
+    //implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // API de Servlet, necessária para lidar com requisições HTTP no backend.
+    implementation 'javax.servlet:javax.servlet-api:4.0.1'
+
+    // Dependências para testes automatizados com Spring Boot e JUnit.
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+}
+
+java {
+    toolchain {
+        // Define a versão do Java usada no projeto.
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+application {
+    // Define a classe principal que será executada quando o aplicativo for iniciado.
+    mainClass = 'org.example.ModeloApplication'
+}
+
+tasks.named('test') {
+    // Configura o uso da plataforma JUnit para rodar testes.
+    useJUnitPlatform()
+}

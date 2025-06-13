@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+    <title>Sistema de Clientes</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/script.js"></script>
+</head>
+
+<body>
+
+<h1>Bem-vindo ao Sistema de Clientes</h1>
+
+<!-- 🔹 Exibe o status do modo escuro -->
+<div id="statusModo" style="font-size: 24px; font-weight: bold; margin: 20px; padding: 10px; background-color: #f0f0f0; border: 2px solid #DCDCDC;">
+    Carregando status do tema...
+</div>
+
+<div class="container">
+    <div class="card">
+        <h2>Lista de Clientes</h2>
+        <button onclick="window.location.href='http://localhost:8080/clientes-view/consulta'">Consultar Clientes</button>
+    </div>
+
+    <div class="card">
+        <h2>Relatórios</h2>
+        <button onclick="window.location.href='/clientes-view/relatorios-html'">Gerar Relatório por Datas</button>
+        <button onclick="window.location.href='/clientes-view/relatorios-atualizados'">Registros Atualizados</button>
+    </div>
+</div>
+
+<button onclick="toggleDarkMode()">Ativar/Desativar Tema Escuro</button>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        let darkModeAtivado = localStorage.getItem("darkMode") === "true";
+        let statusModo = document.getElementById("statusModo");
+
+        if (darkModeAtivado) {
+            document.body.classList.add("dark-mode");
+        }
+
+        if (statusModo) {
+            statusModo.innerText = darkModeAtivado ? "🌙 Modo Escuro ATIVADO! 🌙" : "☀️ Modo Claro ATIVADO! ☀️";
+            statusModo.style.backgroundColor = darkModeAtivado ? "#333" : "#f0f0f0";
+            statusModo.style.color = darkModeAtivado ? "white" : "black";
+        }
+    });
+</script>
+
+</body>
+</html>
+
